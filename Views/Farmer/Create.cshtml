@@ -1,0 +1,44 @@
+﻿@page
+@model FinalAECApp.Views.Farmer.CreateModel
+@{
+    ViewData["Title"] = "Add a farmer";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+<div class="row shadow">
+    <div class="col-md-4">
+        <form id="addProductForm" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Farmers.Name" class="form-control" aria-required="true" placeholder="name" />
+                <label asp-for="Farmers.Name">Name</label>
+                <span asp-validation-for="Farmers.Name" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Farmers.Surname" class="form-control" aria-required="true" placeholder="surname" />
+                <label asp-for="Farmers.Surname">Surname</label>
+                <span asp-validation-for="Farmers.Surname" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Farmers.Email" class="form-control" aria-required="true" placeholder="email" />
+                <label asp-for="Farmers.Email">Email</label>
+                <span asp-validation-for="Farmers.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Farmers.Password" class="form-control" aria-required="true" placeholder="password" />
+                <label asp-for="Farmers.Password">Password</label>
+                <span asp-validation-for="Farmers.Password" class="text-danger"></span>
+            </div>
+
+            <button id="btnAddFarmer" type="submit" class="w-100 btn btn-lg btn-primary">Add</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
