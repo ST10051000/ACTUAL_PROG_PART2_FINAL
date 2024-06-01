@@ -1,0 +1,47 @@
+﻿@model List<FinalAECApp.Models.FarmerViewModel>
+
+@{
+    ViewData["Title"] = "Farmer Details";
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+<form>
+    <button asp-action="Add" asp-controller="Farmer" class="btn btn-primary ab-3">Add Farmer</button>
+    <table class="table table-responsive table-hover table-bordered">
+        <thead>
+            <tr class="table-active">
+                <th>Name</th>
+                <th>Email</th>
+                <th>Products</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var farmer in Model)
+                {
+                    <tr>
+                        <td>@farmer.FullName</td>
+                        <td>@farmer.Email</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a asp-controller="Farmer" asp-action="ViewProducts" asp-route-id="@farmer.FarmerId" class="btn btn-primary">View Products</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6">
+                        <div>No Farmers yet!</div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
+
+
+
